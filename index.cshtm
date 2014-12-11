@@ -1,0 +1,57 @@
+@{
+    PageData["title"] = "Reserve Processing";
+}
+
+<div class="jumbotron">
+       
+    <section class="header">
+        <div class="headerIn">
+            <img id="logo" src="~/Content/Img/alfa_bank.png" width="64" />
+            Корректировка резервов
+        </div>
+    </section>
+
+    <section class="file-upload" ng-controller="indexController">
+        <div class="file-report-eq">
+            <img src="~/Content/Img/fileTxt.png" width="40" />
+            Отчёт из EQ:
+            <input id="inputEq" ng-style="customStyleEq.style" type="file" ng-file-select="onFileSelectEq($files)" name="fileUpload[0]"
+                   accept=".txt" ng-disabled="isInputDisabled" />
+        </div>
+        <div class="file-report-nvkd">
+            <img src="~/Content/Img/fileXls.png" width="40" />
+            Отчёт из НВКД:
+            <input id="inputNvkd" ng-style="customStyleNvkd.style" type="file" ng-file-select="onFileSelectNvkd($files)" name="fileUpload[1]"
+                   accept=".xls,.xlsx" ng-disabled="isInputDisabled" />
+        </div>
+        <div class="file-report-dbf">
+            <img src="~/Content/Img/fileDbf.png" width="40" />
+            Отчёт DBF:
+            <input id="inputDbf" ng-style="customStyleDbf.style" type="file" ng-file-select="onFileSelectDbf($files)" name="fileUpload[2]"
+                   accept=".dbf" ng-disabled="isInputDisabled" />
+        </div>
+        <div class="file-report-csv">
+            <img src="~/Content/Img/fileXls.png" width="40" />
+            Ручной ввод корректировки:
+            <input id="inputNvkd" ng-style="customStyleNvkd.style" type="file" ng-file-select="onFileSelectMan($files)" name="fileUpload[1]"
+                   accept=".xls,.xlsx" ng-disabled="isInputDisabled" />
+        </div>
+        <div class="file-report-csv">
+            <img src="~/Content/Img/fileCsv.png" width="40" />
+            Сгенерированный отчет корректировки:
+            <input id="inputNvkd" ng-style="customStyleCsv.style" type="file" ng-file-select="onFileSelectCsv($files)" name="fileUpload[1]"
+                   accept=".csv" ng-disabled="isInputDisabled" />
+        </div>
+        <input id="processBtn" type="submit" name="Submit" ng-click="showTable()" class="btn btn-primary" value="Вывести таблицу" />
+        <input id="generateBtn" type="submit" name="Submit" ng-click="generateTransactions()" class="btn btn-primary" value="Создать проводки" />
+       
+       <render-partial url="_pacman"></render-partial>
+       
+        <div class="state">
+            <p id="state" ng-style="customStyle.style">State</p>
+        </div>
+        <div class="reportTable">
+        </div>
+    </section>
+</div>
+
